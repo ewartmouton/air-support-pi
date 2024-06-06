@@ -5,7 +5,6 @@ from __future__ import print_function
 import os
 import signal
 import time
-import configparser
 
 import config
 import utils
@@ -41,25 +40,25 @@ GPIO.setup(KEY3_PIN,        GPIO.IN, pull_up_down=GPIO.PUD_UP)      # Input with
 ## Handle keypresses
 def KEY_UP(channel):
     # pim.key_handler(channel)
-    while GPIO.input(KEY_UP_PIN) == False:
+    while GPIO.input(KEY_UP_PIN) is False:
         pim.key_handler(channel)
         time.sleep(0.3)
 
 def KEY_DOWN(channel):
     # pim.key_handler(channel)
-    while GPIO.input(KEY_DOWN_PIN) == False:
+    while GPIO.input(KEY_DOWN_PIN) is False:
         pim.key_handler(channel)
         time.sleep(0.3)
 
 def KEY_LEFT(channel):
     # pim.key_handler(channel)
-    while GPIO.input(KEY_LEFT_PIN) == False:
+    while GPIO.input(KEY_LEFT_PIN) is False:
         pim.key_handler(channel)
         time.sleep(0.1)
 
 def KEY_RIGHT(channel):
     # pim.key_handler(channel)
-    while GPIO.input(KEY_RIGHT_PIN) == False:
+    while GPIO.input(KEY_RIGHT_PIN) is False:
         pim.key_handler(channel)
         time.sleep(0.1)
 
@@ -97,7 +96,8 @@ def receiveSignal(signalNumber, frame):
 signal.signal(signal.SIGTERM, receiveSignal)
 
 try:
-    print('My PID is:', os.getpid())
+    #print('My PID is:', os.getpid())
+
     utils.init()
     pim.mainmenu(0)
     displayGUI.init()

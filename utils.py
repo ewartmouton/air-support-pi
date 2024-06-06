@@ -18,7 +18,7 @@ def init():
     gui_buffer = ["","","","","","",""]
     mainmenu_list = [
         "System info",          #   0
-        "%Connect to wifi%",    #   1
+        "Connect to wifi",      #   1
         "b",                    #   2
         "c",                    #   3
         "d",                    #   4

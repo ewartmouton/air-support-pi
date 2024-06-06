@@ -32,9 +32,6 @@ import time
 from smbus import SMBus
 import spidev
 
-import ctypes
-# import spidev
-
 # Pin definition
 RST_PIN         = 25
 DC_PIN          = 24
@@ -112,5 +109,3 @@ def module_exit():
         bus.close()
     GPIO.output(RST_PIN, 0)
     GPIO.output(DC_PIN, 0)
-
-### END OF FILE ###

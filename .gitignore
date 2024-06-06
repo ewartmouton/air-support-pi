@@ -1,3 +1,4 @@
 *.pyc
 package.json
 var/
+env

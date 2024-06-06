@@ -68,13 +68,13 @@ def handle_display():
 
 def init():
     while 1:
-        if u.display_on_off == True:
+        if u.display_on_off is True:
             blank_display()
             handle_display() # Customzie display
             show_display()
             u.already = False
         else:
-            if u.already == False:
+            if u.already is False:
                 blank_display()
                 show_display()
                 u.already = True
@@ -87,5 +87,5 @@ def contrast():
         u.brightness = 0
     print(u.brightness*16)
     print(int(hex(u.brightness*16),16))
-    disp.command(0x81);
-    disp.command(0xA0);
+    disp.command(0x81)
+    disp.command(0xA0)

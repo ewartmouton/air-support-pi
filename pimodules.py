@@ -28,30 +28,29 @@ def sysinfos(channel):
             #init
             u.page = _id
             u.cursor = 0
-        now = datetime.datetime.now()
-        today_time = now.strftime("%H:%M:%S")
-        today_date = now.strftime("%d %b %y")
-        try:
-	        IP1, IP2, IP3 = get_ip()
-        except:
-	        IP1= get_ip()[0]
-	        IP2= "Nan"
-	        IP3= "Nan"
-        cmd = "top -bn1 | grep load | awk '{printf \"CPU Load: %.2f\", $(NF-2)}'"
-        CPU = subprocess.check_output(cmd, shell = True )
-        cmd = "free -m | awk 'NR==2{printf \"Mem: %s/%sMB %.2f%%\", $3,$2,$3*100/$2 }'"
-        MemUsage = subprocess.check_output(cmd, shell = True )
-        cmd = "df -h | awk '$NF==\"/\"{printf \"Disk: %d/%dGB %s\", $3,$2,$5}'"
-        Disk = subprocess.check_output(cmd, shell = True )
-        u.gui_buffer = [
-            str(CPU),
-            str(MemUsage),
-            str(Disk),
-            "IP1: " + str(IP1)[i:i+14],
-            "IP2: " + str(IP2)[i:i+14],
-            "IP3: " + str(IP3)[i:i+14],
-            today_date + " " + today_time,
-        ]
+
+            now = datetime.datetime.now()
+            today_time = now.strftime("%H:%M:%S")
+            today_date = now.strftime("%d %b %y")
+
+            IP1 = get_ip()
+
+            cmd = "top -bn1 | grep load | awk '{printf \"CPU Load: %.2f\", $(NF-2)}'"
+            CPU = subprocess.check_output(cmd, shell = True )
+
+            cmd = "free -m | awk 'NR==2{printf \"Mem: %s/%sMB %.2f%%\", $3,$2,$3*100/$2 }'"
+            MemUsage = subprocess.check_output(cmd, shell = True )
+
+            cmd = "df -h | awk '$NF==\"/\"{printf \"Disk: %d/%dGB %s\", $3,$2,$5}'"
+            Disk = subprocess.check_output(cmd, shell = True )
+
+            u.gui_buffer = [
+                str(CPU),
+                str(MemUsage),
+                str(Disk),
+                "IP1: " + str(IP1)[i:i+14],
+                today_date + " " + today_time,
+            ]
 
     elif channel == c.KEY_PRESS_PIN:
         sysinfos(0)
