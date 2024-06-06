@@ -15,6 +15,7 @@ ser = serial.Serial(
     timeout=1
 )
 
+
 def read_from_arduino():
     # Read a sequence of bytes from Arduino
     try:
